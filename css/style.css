@@ -245,7 +245,7 @@ div {
         display: inline-block;
         margin: 0 5px;
         padding: 0 5px;
-        background: #f7f8f8;
+        background: #1bea28;
         font-family: Menlo, Consolas, monospace !important; }
       .post .post-content p a {
         color: #01579f;
@@ -789,10 +789,10 @@ pre {
 /* syntax highlight*/
 figure.highlight,
 .codeblock {
-  background: #f7f8f8;
+  background: #060b0b;
   margin: 10px 0;
   line-height: 1.1em;
-  color: #333;
+  color: #f2f2f2;
   padding-top: 15px;
   overflow: hidden; }
   figure.highlight table,
