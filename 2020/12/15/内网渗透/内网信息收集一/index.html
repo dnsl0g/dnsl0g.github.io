@@ -196,7 +196,7 @@
 <p>可以看到服务器代理配置信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg query &quot;HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings&quot;</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/cQX6Fo.jpg" alt="cQX6Fo"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/cQX6Fo.jpg" alt="cQX6Fo"></p>
 <ul>
 <li>16.查询并开启远程连接服务</li>
 </ul>
@@ -204,7 +204,7 @@
 <p>在命令行环境中执行注册表查询语句，如下命令，连接的端口为<code>0xd3d</code>转换后为<code>3389</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REG QUERY &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp&quot; &#x2F;V PortNumber</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/cB7yiq.jpg" alt="cB7yiq"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/cB7yiq.jpg" alt="cB7yiq"></p>
 <p>(2) 在windwos server 2003中开启3389端口</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic path win32_terminalservicesetting where (__CLASS !&#x3D; &quot;&quot;) call setallowtsconnections 1</span><br></pre></td></tr></table></figure>
 
@@ -224,7 +224,7 @@
 <p>另外，<code>situational_awareness/host/computerdetails</code>模块几乎包含了系统中所有用的信息，如目标主机事件日志、应用程序控制策略日志、RDP信息、powershell脚本运行和保存信息等，这个模块<strong>需要管理员权限</strong>运行</p>
 <h2 id="2-查询当前权限"><a href="#2-查询当前权限" class="headerlink" title="2.查询当前权限"></a>2.查询当前权限</h2><h3 id="2-1-查看当前权限"><a href="#2-1-查看当前权限" class="headerlink" title="2.1 查看当前权限"></a>2.1 查看当前权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/UN1ICx.jpg" alt="UN1ICx"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/UN1ICx.jpg" alt="UN1ICx"></p>
 <p>在获取一台主机权限后，有如下三种情况:</p>
 <ul>
 <li>本地普通用户：</li>
@@ -235,7 +235,7 @@
 <p>本地管理员Administrator权限可以直接提升为<code>Ntauthority</code>或<code>System</code>权限，所以，在域中除普通用户外，所有机器都有一个机器用户（用户名是机器名机上“$”）本质上，机器的system用户对应的是域里面的机器用户，因此使用system权限可以运行域内查询命令</p>
 <h3 id="2-2-获取域SID"><a href="#2-2-获取域SID" class="headerlink" title="2.2 获取域SID"></a>2.2 获取域SID</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami &#x2F;all</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/VvwU2r.jpg" alt="VvwU2r"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/VvwU2r.jpg" alt="VvwU2r"></p>
 <p>获取域SID,当前域abcd的SID为S- S-1-5-21-1458359029-3144006124-786683861，域用户zsf的SID为S-1-5-21-1458359029-3144006124-786683861-1104</p>
 <h3 id="2-3-查询指定用户的详细信息"><a href="#2-3-查询指定用户的详细信息" class="headerlink" title="2.3 查询指定用户的详细信息"></a>2.3 查询指定用户的详细信息</h3><p>查询指定用户XXX的信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net user XXX &#x2F;domain</span><br></pre></td></tr></table></figure>
@@ -274,7 +274,7 @@
 <p>执行命令后会有如下三种情况:</p>
 <p>(1) 存在域，但当前用户不是域用户，会出现“发生系统错误，拒绝访问”</p>
 <p>(2) 存在域，且当前用户是域用户，会有如下提示</p>
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/nAXyPb.jpg" alt="nAXyPb"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/nAXyPb.jpg" alt="nAXyPb"></p>
 <p>(3) 当前网络环境为工作组，不存在域，会出现“找不到域WORKGROUP的域控制器”</p>
 <h2 id="4-探测域内存活主机"><a href="#4-探测域内存活主机" class="headerlink" title="4. 探测域内存活主机"></a>4. 探测域内存活主机</h2><p>内网存活主机探测是内网渗透测试中不可或缺的一个环节。可分为白天晚上分别进行探测，以对比分析存活主机和对应的IP地址。</p>
 <h3 id="4-1-利用NetBIOS快速探测内网"><a href="#4-1-利用NetBIOS快速探测内网" class="headerlink" title="4.1 利用NetBIOS快速探测内网"></a>4.1 利用NetBIOS快速探测内网</h3><p>NetBIOS是局域网程序使用的一种应用程序编程接口（API）为程序提供了请求低级别服务的统一命令集，为局域网提供了网络及其他特殊功能。几乎所有局域网都是在NetBIOS协议的基础上工作的。NetBlos也是计算机的标示名，主要用于局域网中计算机的互访。工作流程为正常的机器名解析查询应答过程。</p>
