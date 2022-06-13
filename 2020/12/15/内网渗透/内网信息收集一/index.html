@@ -5,40 +5,40 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig &#x2F;all</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/1dTmzB.jpg" alt="1dTmzB"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/1dTmzB.jpg" alt="1dTmzB"></p>
 <ul>
 <li><p>2.查询操作系统及软件的信息<br>  （1)查询操作系统和版本信息<br>  英文版操作</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systeminfo | findstr &#x2F;B &#x2F;C:&quot;OS Name&quot; &#x2F;C:&quot;OS Version&quot;</span><br></pre></td></tr></table></figure>
 <p>  中文版操作</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systeminfo | findstr &#x2F;B &#x2F;C:&quot;OS 名称&quot; &#x2F;C:&quot;OS 版本&quot;</span><br></pre></td></tr></table></figure>
-<p>  <img src="http://qiniuyun.zzqsmile.top/xzz/0M4ihv.jpg" alt="0M4ihv"></p>
+<p>  <img src="http://qiniuyun.dnsl0g.ml/xzz/0M4ihv.jpg" alt="0M4ihv"></p>
 <p>  （2）查看系统体系结构</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo %PROCESSOR_ARCHITECTURE%</span><br></pre></td></tr></table></figure>
-<p>  <img src="http://qiniuyun.zzqsmile.top/xzz/3fdZfS.jpg" alt="3fdZfS"></p>
+<p>  <img src="http://qiniuyun.dnsl0g.ml/xzz/3fdZfS.jpg" alt="3fdZfS"></p>
 <p>  （3）查看安装的软件及版本、路径等<br>  利用 wmic 命令</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic product get name,version </span><br></pre></td></tr></table></figure>
-<p>  <img src="http://qiniuyun.zzqsmile.top/xzz/yVrYr2.jpg" alt="yVrYr2"></p>
+<p>  <img src="http://qiniuyun.dnsl0g.ml/xzz/yVrYr2.jpg" alt="yVrYr2"></p>
 <p>  利用 PowerShell命令，收集软件的版本信息。</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell &quot;Get-WmiObject -class Win32_Product |Select-Object -Property name,version&quot;</span><br></pre></td></tr></table></figure>
-<p>  <img src="http://qiniuyun.zzqsmile.top/xzz/uZqnNB.jpg" alt="uZqnNB"></p>
+<p>  <img src="http://qiniuyun.dnsl0g.ml/xzz/uZqnNB.jpg" alt="uZqnNB"></p>
 </li>
 <li><p>3.查询本机服务信息</p>
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic service list brief</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/sBCQbv.jpg" alt="sBCQbv"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/sBCQbv.jpg" alt="sBCQbv"></p>
 <ul>
 <li>4.查询进程列表</li>
 </ul>
 <p>执行如下命令，可以查看当前进程列表和进程用户，分析软件、邮件客户端、VPN 和杀毒软件等进程</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/1O246g.jpg" alt="1O246g"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/1O246g.jpg" alt="1O246g"></p>
 <p>执行如下命令，查看进程信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic process list brief</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/Oluts3.jpg" alt="Oluts3"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/Oluts3.jpg" alt="Oluts3"></p>
 <p>常见杀毒软件的进程:</p>
 <table>
 <thead>
@@ -90,7 +90,7 @@
 <p>查看启动程序信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic startup get command,caption</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/1PNhAC.jpg" alt="1PNhAC"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/1PNhAC.jpg" alt="1PNhAC"></p>
 <ul>
 <li>6.查看计划任务</li>
 </ul>
@@ -102,38 +102,38 @@
 <p>查看主机开机时间</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net statistics workstation</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/wjrVU8.jpg" alt="wjrVU8"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/wjrVU8.jpg" alt="wjrVU8"></p>
 <ul>
 <li>8.查询用户列表</li>
 </ul>
 <p>查看本机用户列表</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net user</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/bogfEJ.jpg" alt="bogfEJ"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/bogfEJ.jpg" alt="bogfEJ"></p>
 <p>通过分析本机用户列表，可以找出内网机器的命令规则。个人机器的名字，可用来推测整个域的用户命令方式</p>
 <p>获取本地管理员（通常包含用户）信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net localgroup administrators</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/PLm192.jpg" alt="PLm192"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/PLm192.jpg" alt="PLm192"></p>
 <p>本地管理员有一个用户和一个组，默认的Domain Admins组中为域内机器的本地管理员用户，在实际的环境中，会有域用户被添加为域机器的本地管理员用户</p>
 <p>查看当前在线用户</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">query user || qwinsta</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/C1vnp3.jpg" alt="C1vnp3"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/C1vnp3.jpg" alt="C1vnp3"></p>
 <ul>
 <li>9.列出或断开本地计算机与所连接的客户端之间的会话</li>
 </ul>
 <p>须以管理员身份运行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net session</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/jRo0zU.jpg" alt="jRo0zU"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/jRo0zU.jpg" alt="jRo0zU"></p>
 <ul>
 <li>10.查询端口列表</li>
 </ul>
 <p>查看端口列表、本机开放的端口所对应的服务和应用程序</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/qcM8lT.jpg" alt="qcM8lT"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/qcM8lT.jpg" alt="qcM8lT"></p>
 <p>这里可以根据当前机器和哪些主机建立来连接、以及TCP、UDP等端口的使用和监听情况，从而通过网络连接进行初步的判断（如在代理服务器中可能会有很多机器开放来代理端口、更新服务器可能开放来更新端口8530，DNS服务器可能开放了53端口）再根据其他信息进行综合判断。</p>
 <ul>
 <li>11.查看补丁列表</li>
@@ -141,12 +141,12 @@
 <p>查看系统的详细信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systeminfo</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/kIH4lE.jpg" alt="kIH4lE"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/kIH4lE.jpg" alt="kIH4lE"></p>
 <p>关注系统的版本、位数、域、补丁信息及更新频率等。域内主机基本批量安装，通过查看本机补丁列表从而找到未打补丁的漏洞，这里可以看到没有打补丁</p>
 <p>使用wmic命令查看安装在系统中的补丁</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic qfe get Caption,Description,HotFixID,InstalledOn</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/hzQc8e.jpg" alt="hzQc8e"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/hzQc8e.jpg" alt="hzQc8e"></p>
 <p>补丁的名称、描述、ID、安装时间等信息</p>
 <ul>
 <li>12.查询本机共享列表</li>
@@ -154,11 +154,11 @@
 <p>查看本机共享列表和可访问的域共享列表（域共享在很多时候是相同的）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net share</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/Jm2mhN.jpg" alt="Jm2mhN"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/Jm2mhN.jpg" alt="Jm2mhN"></p>
 <p>利用wmic命令查找共享列表</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic share get name,path,status</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/aYIFCJ.jpg" alt="aYIFCJ"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/aYIFCJ.jpg" alt="aYIFCJ"></p>
 <ul>
 <li>13.查询路由表及所有可用接口的ARP缓存表</li>
 </ul>
@@ -240,7 +240,7 @@
 <h3 id="2-3-查询指定用户的详细信息"><a href="#2-3-查询指定用户的详细信息" class="headerlink" title="2.3 查询指定用户的详细信息"></a>2.3 查询指定用户的详细信息</h3><p>查询指定用户XXX的信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net user XXX &#x2F;domain</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/2DqzlP.jpg" alt="2DqzlP"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/2DqzlP.jpg" alt="2DqzlP"></p>
 <h2 id="3-判断是否存在域"><a href="#3-判断是否存在域" class="headerlink" title="3. 判断是否存在域"></a>3. 判断是否存在域</h2><p>获取了本机相关性信息后，要判断当前内网中是否存在域。如果当前内网中存在域，就需要判断所控主机是否在域内。判断方法有几种如下：</p>
 <ul>
 <li>使用ipconfig命令</li>
@@ -248,23 +248,23 @@
 <p>使用<code>ipconifg /all</code>可以查看网管IP地址、DNS的IP地址、域名、本机是否和DNS服务器出域同一网段等信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig &#x2F;all</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/wwpsdm.jpg" alt="wwpsdm"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/wwpsdm.jpg" alt="wwpsdm"></p>
 <p>通过反向解析查询命令nslookup来解析域名的IP地址。用解析得到的IP地址进行对比，判断域控制器和DNS服务器是否在同一台服务器上</p>
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/wwotB0.jpg" alt="wwotB0"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/wwotB0.jpg" alt="wwotB0"></p>
 <ul>
 <li>查看系统详细信息</li>
 </ul>
 <p>“域”既域名，“登录服务器”为域控制器。如果“域”为“WORKGROUP”表示当前服务器不在域内。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systeminfo</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/QoOidx.jpg" alt="QoOidx"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/QoOidx.jpg" alt="QoOidx"></p>
 <ul>
 <li>查询当前登录域及登录用户信息</li>
 </ul>
 <p>“工作站域DNS名称”为域名（如果“WORKGROUP”表示当前为非域环境），“登录域”用于表示当前登录用户是域用户还是本地用户，此时显示为当前登录的用户的域用户</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net config workstation</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://qiniuyun.zzqsmile.top/xzz/i4oz00.jpg" alt="i4oz00"></p>
+<p><img src="http://qiniuyun.dnsl0g.ml/xzz/i4oz00.jpg" alt="i4oz00"></p>
 <ul>
 <li>判断主域</li>
 </ul>
